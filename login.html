@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="master.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form  name="login" method="get" id="login">
+        <h1>Login</h1>
+        <span>Username</span>
+        <input id="field1" type="text" name="user">
+        <label for="field1">Fill this blank</label>
+        <span>Password</span>
+        <input id="field2" type="password" name="pass">
+        <label for="field2">Fill this blank</label>
+        <input id="button" type="button" value="GO">
+        <h2>Forgot your password?</h2>
+    </form>
+    <div id="box">
+        <i class="fas fa-pencil-alt"></i>
+        <form id="register" action="">
+            <h1>Register<i class="fas fa-times"></i></h1>
+            <span>Username</span>
+            <input id="blank1" type="text" name="user">
+            <label for="blank1">Fill this blank</label>
+            <span>Password</span>
+            <input id="blank2" type="password" name="pass">
+            <label for="blank2">Fill this blank</label>
+            <span>Repeat Password</span>
+            <input id="blank3" type="password" name="pass">
+            <label for="blank3">Password doesn't match</label>
+            <input id="button2" type="button" value="Next">
+        </form>
+    
+    </div>
+
+
+
+
+    <script>
+        
+        $(function(){
+            $("#field1").click(function(){
+                $(this).siblings("span:nth-of-type(1)").css("transform", "translateY(20px)");
+                $(this).css("border-bottom-color","rgb(255, 0, 64)");
+            });
+
+            $("#field1").keyup(function(){
+                $('#login>label:nth-of-type(1)').fadeOut();
+            });
+
+            $("#field2").click(function(){
+                $(this).siblings("span:nth-of-type(2)").css("transform", "translateY(20px)");
+                $(this).css("border-bottom-color","rgb(255, 0, 64)");
+            });
+
+            $("#field2").keyup(function(){
+                $('#login>label:nth-of-type(2)').fadeOut();
+            });
+
+            $("#button").hover(function(){
+                $(this).css({"border-color": "rgb(255, 0, 64)" , "color": "rgb(255, 0, 64)", "cursor" : "pointer"});
+
+            }, function(){
+                $(this).css({"border-color": "rgb(150, 150, 150)" , "color": "rgb(150, 150, 150)"});
+            });
+            $("#login>h2").hover(function(){
+                $(this).css("cursor", "pointer")
+            });
+
+            $("#button").click(function(){
+                var _name = $("#field1").val();
+                var _pass = $("#field2").val();
+
+                if(_name=="" || _name==null){
+                $('#login>label:nth-of-type(1)').fadeIn();
+                }else{
+                    $('#login>label:nth-of-type(1)').fadeOut();
+                }
+
+                if(_pass=="" || _pass==null){
+                $('#login>label:nth-of-type(2)').fadeIn();
+                }else{
+                    $('#login>label:nth-of-type(2)').fadeOut();
+
+                }
+
+                if((_pass!="" && _pass!=null) && (_name!="" && _name!=null)){
+                    $('#login')[0].reset();
+                }
+            });
+
+            $("#box>i").hover(function(){
+                $(this).css("cursor", "pointer")
+            });
+
+            $("#box>i").click(function(){
+                $("#box").css({"width": "32%",  "height":"510px" , "margin-left" :"34%" , "border-radius":"0"});
+                $("#register").css({"opacity" : "1" , "transition" :"1.5s"});
+                $("#box").children("i").css("display" , "none");
+            });
+
+            $("#register>h1>i").hover(function(){
+                $(this).css("cursor", "pointer")
+            });
+
+            $("#register>h1>i").click(function(){
+                $("#box").css({"width": "10%",  "height":"120px", "margin-left":"60%" , "border-radius":"50%"});
+                $("#register").css({"opacity" : "0" , "transition" :".3s"});
+                $("#box").children("i").css("display" , "block");
+            });
+
+
+            $("#blank1").click(function(){
+                $(this).siblings("span:nth-of-type(1)").css("transform", "translateY(20px)");
+            });
+
+            $("#blank1").keyup(function(){
+                $('#register>label:nth-of-type(1)').fadeOut();
+            });
+
+            $("#blank2").click(function(){
+                $(this).siblings("span:nth-of-type(2)").css("transform", "translateY(20px)");
+            });
+
+            $("#blank2").keyup(function(){
+                $('#register>label:nth-of-type(2)').fadeOut();
+            });
+
+            $("#blank3").click(function(){
+                $(this).siblings("span:nth-of-type(3)").css("transform", "translateY(20px)");
+            });
+
+            $("#blank3").keyup(function(){
+                $('#register>label:nth-of-type(3)').fadeOut();
+            });
+
+
+            $("#button2").hover(function(){
+                $(this).css( {"background-color": "whitesmoke", "cursor": "pointer"});
+
+            }, function(){
+                $(this).css( "background-color", "white");
+            });
+
+            $("#button2").click(function(){
+                var _name2 = $("#blank1").val();
+                var _pass2 = $("#blank2").val();
+                var r_pass = $("#blank3").val();
+
+                if((_name2=="" || _name2==null) && (_pass2!="" || _pass2!=null)){
+                $('#register>label:nth-of-type(1)').fadeIn();
+                }else{
+                    $('#register>label:nth-of-type(1)').fadeOut();
+                }
+
+                if((_pass2=="" || _pass2==null) && (_name2!="" || _name2!=null)){
+                $('#register>label:nth-of-type(2)').fadeIn();
+                }else{
+                    $('#register>label:nth-of-type(2)').fadeOut();
+
+                }
+
+                if((r_pass=="" || r_pass==null || r_pass!=_pass2)){
+                $('#register>label:nth-of-type(3)').fadeIn();
+                }else{
+                    $('#register>label:nth-of-type(3)').fadeOut();
+
+                }
+
+                if((_pass2!="" && _pass2!=null) && (_name2!="" && _name2!=null) && (r_pass!="" && r_pass!=null) && (r_pass == _pass2)){
+                    $('#register')[0].reset();
+                }
+            });
+
+
+
+            
+        });
+
+
+    </script>
+</body>
+</html>
